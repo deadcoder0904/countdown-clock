@@ -8,18 +8,15 @@ document.addEventListener('DOMContentLoaded',function() {
 	let interval;
 
 	function startingCountDown(seconds) {
-		const now = Date.now();
-		const then = now + seconds * 1000;
 		displayTimeLeft(seconds);
 		interval = setInterval(() => {
-			const secondsLeft = Math.round((then - Date.now()) / 1000);
-			if(secondsLeft === 5)
-				alarm.play();
-			if(secondsLeft < 0) {
+			seconds--;
+			if(seconds === 5)	alarm.play();
+			 if(seconds < 0) {
 				clearInterval(interval);
 				return;
 			}
-			displayTimeLeft(secondsLeft);
+			displayTimeLeft(seconds);
 		},1000);
 	}
 
